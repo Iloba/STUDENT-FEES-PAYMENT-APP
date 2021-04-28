@@ -22,7 +22,6 @@ class CreateStudentsTable extends Migration
             $table->string('student_gender'); //gender
             $table->string('student_course'); //course
             $table->string('password'); //password
-            $table->string('password_confirmation'); //password-confirm
             $table->timestamps();
         });
     }

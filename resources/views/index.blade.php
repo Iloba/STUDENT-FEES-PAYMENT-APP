@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <div class="registration-form mt-5 shadow">
                         <h2 class="mb-4">Register</h2>
-                        <form action="/register" method="POST">
+                        <form action="{{route('register-student')}}" method="POST">
                             @csrf
                             <label for=""><b>Student FullName</b></label> 
                              <div class="input-group mb-3">
@@ -98,7 +98,7 @@
                                     <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password"  aria-label="Student Password" aria-describedby="basic-addon1">
                                 </div>
 
-                                <input type="submit" class="btn btn-info text-light" value="Register">
+                                <input type="submit" name="submit" class="btn btn-info text-light" value="Register">
                         </form>
                     </div>
                 </div>

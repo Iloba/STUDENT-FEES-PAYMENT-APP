@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 //Register Student
-Route::post('/register', [StudentController::class, 'store'])->name('register-student');
+Route::any('/register-student', [StudentController::class, 'store'])->name('register-student');
 
 Auth::routes();
 

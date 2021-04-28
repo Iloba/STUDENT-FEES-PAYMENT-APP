@@ -46,7 +46,7 @@
                                     <label for=""><b>Student Level</b></label> 
                                     <div class="input-group mb-3">
                                        <div class="input-group-prepend">              
-                                           <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-house"></i></span>
+                                           <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-graduate"></i></span>
                                        </div>  
                                        <input type="text" name="student_level" class="form-control  @error('student_level') is-invalid @enderror" placeholder="Student Level" value="{{old('student_level')}}" aria-label="Student Level" aria-describedby="basic-addon1" >
                                    </div>

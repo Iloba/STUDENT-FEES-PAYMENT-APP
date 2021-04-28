@@ -48,7 +48,15 @@ class StudentController extends Controller
             'password_confirmation' => 'required'
         ]);
         
-        return 'help';
+        //Hash Passwords
+
+
+
+        //Generate Registration Number
+
+
+
+        //Save
     }
 
     /**

@@ -22,6 +22,7 @@
                 <div class="col-md-6">
                     <div class="registration-form mt-5 shadow">
                         <h2 class="mb-4">Register</h2>
+                        @include('layouts.error')
                         <form action="{{route('register-student')}}" method="POST">
                             @csrf
                             <label for=""><b>Student FullName</b></label> 
@@ -29,7 +30,7 @@
                                 <div class="input-group-prepend">              
                                     <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-ui-user"></i></span>
                                 </div>  
-                                <input type="text" name="student_name" class="form-control" placeholder="Student Name" value="{{old('student_name')}}" aria-label="Student Name" aria-describedby="basic-addon1" >
+                                <input type="text" name="student_name" class="form-control  @error('student_name') is-invalid @enderror" placeholder="Student Name" value="{{old('student_name')}}" aria-label="Student Name" aria-describedby="basic-addon1" >
                             </div>
 
                             <label for=""><b>Student Email/Admission Number</b></label> 
@@ -37,7 +38,7 @@
                                 <div class="input-group-prepend">              
                                     <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-envelope"></i></span>
                                 </div>  
-                                <input type="text" name="student_email" class="form-control" placeholder="Student Email/Admission Number" value="{{old('student_email')}}" aria-label="Student Email" aria-describedby="basic-addon1" >
+                                <input type="text" name="student_email" class="form-control  @error('student_email') is-invalid @enderror" placeholder="Student Email/Admission Number" value="{{old('student_email')}}" aria-label="Student Email" aria-describedby="basic-addon1" >
                             </div>
 
                             <div class="row">
@@ -47,7 +48,7 @@
                                        <div class="input-group-prepend">              
                                            <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-house"></i></span>
                                        </div>  
-                                       <input type="text" name="student_level" class="form-control" placeholder="Student Level" value="{{old('student_level')}}" aria-label="Student Level" aria-describedby="basic-addon1" >
+                                       <input type="text" name="student_level" class="form-control  @error('student_level') is-invalid @enderror" placeholder="Student Level" value="{{old('student_level')}}" aria-label="Student Level" aria-describedby="basic-addon1" >
                                    </div>
                                 </div>
                                 <div class="col-md-6">
@@ -56,7 +57,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-male"></i></span>
                                             </div>
-                                            <select class="form-control" name="student_gender" id="">
+                                            <select class="form-control  @error('student_gender') is-invalid @enderror" name="student_gender" id="">
                                                 <option value="">----Select----</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
@@ -70,7 +71,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-book"></i></span>
                                             </div>
-                                            <select class="form-control" name="student_course" id="">
+                                            <select class="form-control  @error('student_course') is-invalid @enderror" name="student_course" id="">
                                                 <option value="">----Select----</option>
                                                 <option value="Medcine">Medcine</option>
                                                 <option value="Nursing">Nursing</option>
@@ -87,7 +88,7 @@
                                     <div class="input-group-prepend">              
                                         <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-lock"></i></span>
                                     </div>  
-                                    <input type="password" name="password" class="form-control" placeholder="Student Password"  aria-label="Student Password" aria-describedby="basic-addon1">
+                                    <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" placeholder="Student Password"  aria-label="Student Password" aria-describedby="basic-addon1">
                                 </div>
 
                                 <label for=""><b>Confirm Password</b></label> 
@@ -95,7 +96,7 @@
                                     <div class="input-group-prepend">              
                                         <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-lock"></i></span>
                                     </div>  
-                                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password"  aria-label="Student Password" aria-describedby="basic-addon1">
+                                    <input type="password" name="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror" placeholder="Confirm Password"  aria-label="Student Password" aria-describedby="basic-addon1">
                                 </div>
 
                                 <input type="submit" name="submit" class="btn btn-info text-light" value="Register">

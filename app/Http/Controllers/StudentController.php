@@ -36,7 +36,19 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //save student to database
+
+        //Validate
+        $request->validate([
+            'student_name' => 'required | string | max:255',
+            'student_email' => 'required | string | max:255',
+            'student_level' => 'required | string | max:255',
+            'student_gender' => 'required | string | max:255 | not_in:0',
+            'student_course' => 'required | string | max:255 | not_in:0',
+            'password' => 'required | string | min:8 | confirmed',
+            'password_confirmation' => 'required'
+        ]);
         
+        return 'help';
     }
 
     /**

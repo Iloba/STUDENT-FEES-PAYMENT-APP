@@ -59,14 +59,18 @@ class StudentController extends Controller
         $letters = 'ABC';
         $year = date('y');
         $course = substr($request->student_course, 0, 3);
-
         $ref_number = mt_rand(1000, 1999);
 
-        dd($ref_number);
+        // dd($ref_number);
+        
+        $student_reg_number = $letters.'/'.$year.'/'.$course.'/'.$ref_number;
 
-
-
+        // dd($student_reg_number);
+    
         //Save
+        $student = new Student;
+        $student->student_name = $request->student_name; //Student Name
+       
     }
 
     /**

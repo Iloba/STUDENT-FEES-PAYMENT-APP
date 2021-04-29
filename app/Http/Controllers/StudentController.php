@@ -58,7 +58,7 @@ class StudentController extends Controller
         //Generate Registration Number
         $letters = 'ABC';
         $year = date('y');
-        $course = substr($request->student_course, 0, 3);
+        $course = substr(strtoupper($request->student_course), 0, 3);
         $ref_number = mt_rand(1000, 1999);
 
         // dd($ref_number);

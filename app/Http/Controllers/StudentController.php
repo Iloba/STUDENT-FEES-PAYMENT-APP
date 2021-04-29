@@ -70,6 +70,20 @@ class StudentController extends Controller
         //Save
         $student = new Student;
         $student->student_name = $request->student_name; //Student Name
+        $student->student_email = $request->student_email; //Student Email
+        $student->student_reg_number = $student_reg_number; //Student Registration Number
+        $student->student_admission_number = $request->student_admission_number; //Student Admission Number
+        $student->student_level = $request->student_level; //Student level
+        $student->student_gender = $request->student_gender; //Student Gender
+        $student->student_course = $request->student_course; //Student Course
+        $student->password = $hashed_password; // Student Password
+
+        $student->save();
+
+        //if Creation was sucessful
+        if($student->save()){
+            return back()->with('status', 'registration successful');
+        }
        
     }
 

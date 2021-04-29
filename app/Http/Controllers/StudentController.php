@@ -41,12 +41,12 @@ class StudentController extends Controller
         //Validate
         $request->validate([
             'student_name' => 'required | string | max:255',
-            'student_email' => 'required | email | max:255',
-            'student_admission_number' => 'required | string | max:255',
+            'student_email' => 'required | email | max:255 | unique:students',
+            'student_admission_number' => 'required | string | max:255 | unique:students',
             'student_level' => 'required | string | max:255',
             'student_gender' => 'required | string | max:255 | not_in:0',
             'student_course' => 'required | string | max:255 | not_in:0',
-            'password' => 'required | string | min:8 | confirmed',
+            'password' => 'required | string | min:8 | max:12 | confirmed',
             'password_confirmation' => 'required'
         ]);
         
@@ -82,7 +82,7 @@ class StudentController extends Controller
 
         //if Creation was sucessful
         if($student->save()){
-            return back()->with('status', 'registration successful');
+            return redirect(route('student-profile'))->with('status', 'registration successful');
         }
        
     }

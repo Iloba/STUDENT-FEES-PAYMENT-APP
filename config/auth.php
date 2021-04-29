@@ -39,8 +39,8 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            
         ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -71,10 +71,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' =>  App\Models\Student::class,
+        ],
     ],
 
     /*

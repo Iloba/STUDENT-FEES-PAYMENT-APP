@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentLogin;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,14 @@ Route::get('/', function () {
 
 //Register Student
 Route::any('/register-student', [StudentController::class, 'store'])->name('register-student');
+
+//login student
+Route::any('/student-login', [StudentLogin::class, 'loginStudent'])->name('student-login');
+
+//Student Profile
+Route::any('/profile', [StudentLogin::class, 'profile'])->name('student-profile');
+
+Route::view('/slogin', 'student-login');
 
 Auth::routes();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -40,7 +41,8 @@ class StudentController extends Controller
         //Validate
         $request->validate([
             'student_name' => 'required | string | max:255',
-            'student_email' => 'required | string | max:255',
+            'student_email' => 'required | email | max:255',
+            'student_admission_number' => 'required | string | max:255',
             'student_level' => 'required | string | max:255',
             'student_gender' => 'required | string | max:255 | not_in:0',
             'student_course' => 'required | string | max:255 | not_in:0',
@@ -49,10 +51,18 @@ class StudentController extends Controller
         ]);
         
         //Hash Passwords
+        $hashed_password = Hash::make($request->password);
 
-
+        // dd($hashed_password);
 
         //Generate Registration Number
+        $letters = 'ABC';
+        $year = date('y');
+        $course = substr($request->student_course, 0, 3);
+
+        $ref_number = mt_rand(1000, 1999);
+
+        dd($ref_number);
 
 
 

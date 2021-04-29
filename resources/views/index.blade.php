@@ -25,21 +25,35 @@
                         @include('layouts.error')
                         <form action="{{route('register-student')}}" method="POST">
                             @csrf
-                            <label for=""><b>Student FullName</b></label> 
+                            <label for=""><b>Student Full Name</b></label> 
                              <div class="input-group mb-3">
                                 <div class="input-group-prepend">              
                                     <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-ui-user"></i></span>
                                 </div>  
-                                <input type="text" name="student_name" class="form-control  @error('student_name') is-invalid @enderror" placeholder="Student Name" value="{{old('student_name')}}" aria-label="Student Name" aria-describedby="basic-addon1" >
+                                <input type="text" name="student_name" class="form-control  @error('student_name')  is-invalid   @enderror" placeholder="Student Name" value="{{old('student_name')}}" aria-label="Student Name" aria-describedby="basic-addon1" >
                             </div>
 
-                            <label for=""><b>Student Email/Admission Number</b></label> 
-                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">              
-                                    <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-envelope"></i></span>
-                                </div>  
-                                <input type="text" name="student_email" class="form-control  @error('student_email') is-invalid @enderror" placeholder="Student Email/Admission Number" value="{{old('student_email')}}" aria-label="Student Email" aria-describedby="basic-addon1" >
-                            </div>
+                           <div class="row">
+                                <div class="col-md-6">
+                                    <label for=""><b>Student Email</b></label> 
+                                    <div class="input-group mb-3">
+                                       <div class="input-group-prepend">              
+                                           <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-envelope"></i></span>
+                                       </div>  
+                                       <input type="text" name="student_email" class="form-control  @error('student_email') is-invalid @enderror" placeholder="Student Email" value="{{old('student_email')}}" aria-label="Student Email" aria-describedby="basic-addon1" >
+                                   </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for=""><b>Admission Number</b></label> 
+                                    <div class="input-group mb-3">
+                                       <div class="input-group-prepend">              
+                                           <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-graduate"></i></span>
+                                       </div>  
+                                       <input type="text" name="student_admission_number" class="form-control  @error('student_admission_number') is-invalid @enderror" placeholder="Admission Number" value="{{old('student_admission_number')}}" aria-label="Student Email" aria-describedby="basic-addon1" >
+                                   </div>
+                                </div>
+                           </div>
 
                             <div class="row">
                                 <div class="col-md-6">

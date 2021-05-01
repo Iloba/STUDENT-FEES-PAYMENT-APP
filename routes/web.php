@@ -28,13 +28,24 @@ Route::any('/student-login', [StudentLogin::class, 'loginStudent'])->name('stude
 //Student Profile
 Route::any('/profile', [StudentLogin::class, 'profile'])->name('student-profile');
 
-Route::view('/slogin', 'student-login');
+//Student Logout
+Route::get('/student-logout', [StudentLogin::class, 'logout'])->name('student-logout');
 
-Auth::routes();
+//List All Students
+Route::get('/home/students', [StudentController::class, 'index'])->name('students-list');
+
+//Edit Student
+Route::get('/home/students/{id}/edit', [StudentController::class, 'edit'])->name('edit-student');
+
+//Update Student
+Route::post('/home/students/{id}/update', [StudentController::class, 'update'])->name('update-student');
+
+//Delete Student
+Route::any('/home/students/{id}/delete', [StudentController::class, 'destroy'])->name('delete-student');
+
+Route::view('/slogin', 'student-login')->name('slogin');
 
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

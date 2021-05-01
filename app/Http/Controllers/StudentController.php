@@ -15,7 +15,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        //return all students
+        $students = Student::all();
+
+        return view('admin.students-list')->with(['students' => $students]);
     }
 
     /**
@@ -46,7 +49,7 @@ class StudentController extends Controller
             'student_level' => 'required | string | max:255',
             'student_gender' => 'required | string | max:255 | not_in:0',
             'student_course' => 'required | string | max:255 | not_in:0',
-            'password' => 'required | string | min:8 | max:12 | confirmed',
+            'password' => 'required | string | min:8 | max:15 | confirmed',
             'password_confirmation' => 'required'
         ]);
         
@@ -80,9 +83,11 @@ class StudentController extends Controller
 
         $student->save();
 
-        //if Creation was sucessful
+        //if Creation was sucessful redirect to dashboard
         if($student->save()){
-            return redirect(route('student-profile'))->with('status', 'registration successful');
+            $request->session()->put('LoggedUser', $student->id);
+
+            return redirect(route('student-profile'))->with('status', 'Registration Successful');
         }
        
     }
@@ -104,9 +109,12 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
         //
+        $student = Student::find($id);
+
+        return view('admin.edit-student')->with(['student' => $student]);
     }
 
     /**
@@ -116,9 +124,44 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        //Update Student
+
+        //Validate
+        $request->validate([
+            'student_name' => 'required | string | max:255',
+            'student_email' => 'required | email | max:255 ',
+            'student_admission_number' => 'required | string | max:255',
+            'student_level' => 'required | string | max:255',
+            'student_gender' => 'required | string | max:255 | not_in:0',
+            'student_course' => 'required | string | max:255 | not_in:0',
+            'password' => 'required | string | min:8 | max:15 | confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $student = Student::find($id);
+
+        //Hash Passwords
+        $hashed_password = Hash::make($request->password);
+
+        //Save
+
+      
+        $student->student_name = $request->student_name; //Student Name
+        $student->student_email = $request->student_email; //Student Email
+        $student->student_admission_number = $request->student_admission_number; //Student Admission Number
+        $student->student_level = $request->student_level; //Student level
+        $student->student_gender = $request->student_gender; //Student Gender
+        $student->student_course = $request->student_course; //Student Course
+        $student->password = $hashed_password; // Student Password
+
+        $student->save();
+
+         //if Update was sucessful
+         if($student->save()){
+            return redirect(route('students-list'))->with('status', 'Update Successful');
+        }
     }
 
     /**
@@ -127,8 +170,16 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        //Delete Student
+
+        $student = Student::find($id);
+
+        $student->delete();
+
+     
+        return back()->with('status', 'Delete Operation Successful');       
+        
     }
 }

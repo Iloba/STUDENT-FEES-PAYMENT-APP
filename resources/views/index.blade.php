@@ -175,7 +175,7 @@
     </body>
     <footer class="mt-5 shadow">
       <div class="links text-center">
-            <a class="nav-link" href="{{route('login')}}">Admin-Login</a>
+            <a class="nav-link " href="{{route('login')}}">Admin-Login</a>
             <p class="text-secondary">&copy; 2021 | Student Payment</p>
       </div>
     </footer>

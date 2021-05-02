@@ -146,16 +146,18 @@ class StudentController extends Controller
 
         $student = Student::find($id);
 
-
-
-        //check if course  was changed
+        //If in the Process of Editing The User Decided to Change Course
+        if($student->student_course !== $request->student_course){
+            return redirect(route('edit-student', $student->id))
+            ->with('error', 'Note, Student is About to change Course this will Affect the Registration Number.
+            Kindly Delete the Student and Re-register him/her so a new registration number can be issued to him/her');
+        }
+      
 
         //Hash Passwords
         $hashed_password = Hash::make($request->password);
 
         //Save
-
-      
         $student->student_name = $request->student_name; //Student Name
         $student->student_email = $request->student_email; //Student Email
         $student->student_admission_number = $request->student_admission_number; //Student Admission Number
@@ -163,6 +165,7 @@ class StudentController extends Controller
         $student->student_gender = $request->student_gender; //Student Gender
         $student->student_course = $request->student_course; //Student Course
         $student->password = $hashed_password; // Student Password
+
 
         $student->save();
 

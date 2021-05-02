@@ -56,7 +56,7 @@
                                      <div class="input-group-prepend">
                                          <span class="input-group-text bg-info text-light" id="basic-addon1"><i class="icofont-male"></i></span>
                                      </div>
-                                     <select class="form-control  @error('student_gender') is-invalid @enderror" name="student_gender" >
+                                     <select class="form-control  @error('student_gender') is-invalid @enderror"  name="student_gender" >
                                          <option value="">----Select----</option>
                                          <option value="Male">Male</option>
                                          <option value="Female">Female</option>

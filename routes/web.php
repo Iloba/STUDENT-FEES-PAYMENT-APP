@@ -17,7 +17,7 @@ use App\Http\Controllers\StudentLogin;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('AlreadyLoggedIn');
 
 //Register Student
 Route::any('/register-student', [StudentController::class, 'store'])->name('register-student');
@@ -26,24 +26,27 @@ Route::any('/register-student', [StudentController::class, 'store'])->name('regi
 Route::any('/student-login', [StudentLogin::class, 'loginStudent'])->name('student-login');
 
 //Student Profile
-Route::any('/profile', [StudentLogin::class, 'profile'])->name('student-profile');
+Route::any('/profile', [StudentLogin::class, 'profile'])->name('student-profile')->middleware('isLogged');
 
 //Student Logout
-Route::get('/student-logout', [StudentLogin::class, 'logout'])->name('student-logout');
+Route::post('/student-logout', [StudentLogin::class, 'logout'])->name('student-logout');
 
 //List All Students
-Route::get('/home/students', [StudentController::class, 'index'])->name('students-list');
+Route::get('/home/students', [StudentController::class, 'index'])->name('students-list')->middleware('auth');
+
+//Show individual Student
+Route::get('/home/students/{id}', [StudentController::class, 'show'])->name('student-detail');
 
 //Edit Student
-Route::get('/home/students/{id}/edit', [StudentController::class, 'edit'])->name('edit-student');
+Route::get('/home/students/{id}/edit', [StudentController::class, 'edit'])->name('edit-student')->middleware('auth');
 
 //Update Student
-Route::post('/home/students/{id}/update', [StudentController::class, 'update'])->name('update-student');
+Route::post('/home/students/{id}/update', [StudentController::class, 'update'])->name('update-student')->middleware('auth');
 
 //Delete Student
-Route::any('/home/students/{id}/delete', [StudentController::class, 'destroy'])->name('delete-student');
+Route::any('/home/students/{id}/delete', [StudentController::class, 'destroy'])->name('delete-student')->middleware('auth');
 
-Route::view('/slogin', 'student-login')->name('slogin');
+Route::view('/slogin', 'student-login')->name('slogin')->middleware('AlreadyLoggedIn');
 
 
 

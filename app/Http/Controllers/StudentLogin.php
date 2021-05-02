@@ -42,6 +42,11 @@ class StudentLogin extends Controller
         }
     }
 
+    //Guard
+    // protected function guard(){
+    //     return Auth::guard('student');
+    // }
+
     //Get Student Profile
     public function profile(){
 

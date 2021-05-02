@@ -15,9 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    <h3>Hello This is Your Profile Page</h3>x
-                    {{$loggedUserInfo->student_name}} <br>
-                    {{$loggedUserInfo->student_email}}
+                    <h3>Hello {{$loggedUserInfo->student_name}}, This is Your Profile Page</h3>
+                    <b>Name:</b> {{$loggedUserInfo->student_name}} <br>
+                   <b> Email:</b> {{$loggedUserInfo->student_email}}
                     <br>
                     <a href="{{route('student-logout')}}">Logout</a>  
 

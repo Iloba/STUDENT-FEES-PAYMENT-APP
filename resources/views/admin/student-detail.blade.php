@@ -2,14 +2,14 @@
 @section('content')
 <div class="container-fluid">
     <div class="container">
-        <a class="btn btn-info text-light" href="{{route('home')}}"><i class="icofont-arrow-left"></i></a>
+        <a class="btn btn-info text-light" href="{{route('students-list')}}"><i class="icofont-arrow-left"></i></a>
         <div class="row justify-content-center">
             <div class="col-md-12 p-3">
                 <div class="card p-4">
                     <div class="card-header">
                         <h3>Registered Students</h3>
                     </div>
-                    @if (count($students) > 0)
+                   
                     <div class="table-responsive">
                         @include('layouts.error')
                         <table class="table table-bordered table-hover">
@@ -26,8 +26,7 @@
                                   <th>Delete</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($students as $student)
+                            <tbody>  
                                 <tr>
                                     <td><a href="{{route('student-detail', $student->id)}}">{{$student->student_name}}</a></td>
                                     <td>{{$student->student_reg_number}}</td>
@@ -52,21 +51,13 @@
                                         </form>
                                     </td>
                                 </tr>
-                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-
-                    @else
-
-                    <p class="p-3 text-center">No registered Student Yet</p>
-
-                    @endif
             
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

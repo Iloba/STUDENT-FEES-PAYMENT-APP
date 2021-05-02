@@ -26,10 +26,10 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -98,9 +98,13 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show($id)
     {
-        //
+        //Show Student Detail
+        $student = Student::find($id);
+
+        return view('admin.student-detail')->with(['student' => $student]);
+
     }
 
     /**
@@ -141,6 +145,10 @@ class StudentController extends Controller
         ]);
 
         $student = Student::find($id);
+
+
+
+        //check if course  was changed
 
         //Hash Passwords
         $hashed_password = Hash::make($request->password);

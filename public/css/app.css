@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -10916,4 +10916,9 @@ a.text-dark:focus {
 }
 ul li{
   list-style-type: none;
+}
+footer{
+  padding: 40px;
+  background-color: #fff;
+
 }

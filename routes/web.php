@@ -29,7 +29,7 @@ Route::any('/student-login', [StudentLogin::class, 'loginStudent'])->name('stude
 Route::any('/profile', [StudentLogin::class, 'profile'])->name('student-profile')->middleware('isLogged');
 
 //Student Logout
-Route::post('/student-logout', [StudentLogin::class, 'logout'])->name('student-logout');
+Route::any('/student-logout', [StudentLogin::class, 'logout'])->name('student-logout');
 
 //List All Students
 Route::get('/home/students', [StudentController::class, 'index'])->name('students-list')->middleware('auth');

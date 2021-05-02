@@ -38,33 +38,19 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('slogin') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="/">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                        @if (session()->has('LoggedUser'))
-                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    
-                                    {{$loggedUserInfo->student_name}} 
-                                    
-                                     @else
-
-                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('slogin') }}">{{ __('Login') }}</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/">{{ __('Register') }}</a>
-                                    </li>
-
-                                     @endif
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -74,7 +60,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('student-logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
@@ -187,4 +173,10 @@
            </div>
         </div>
     </body>
+    <footer class="mt-5 shadow">
+      <div class="links text-center">
+            <a class="nav-link" href="{{route('login')}}">Admin-Login</a>
+            <p class="text-secondary">&copy; 2021 | Student Payment</p>
+      </div>
+    </footer>
 </html>

@@ -48,6 +48,7 @@ class StudentController extends Controller
             'student_admission_number' => 'required | string | max:255 | unique:students',
             'student_level' => 'required | string | max:255',
             'student_gender' => 'required | string | max:255 | not_in:0',
+            'session' => 'required | string | max:255 | not_in:0',
             'student_course' => 'required | string | max:255 | not_in:0',
             'password' => 'required | string | min:8 | max:15 | confirmed',
             'password_confirmation' => 'required'
@@ -60,7 +61,7 @@ class StudentController extends Controller
 
         //Generate Registration Number
         $letters = 'ABC';
-        $year = date('y');
+        $year = substr($request->session, 2,2);
         $course = substr(strtoupper($request->student_course), 0, 3);
         $ref_number = mt_rand(1000, 1999);
 
@@ -77,6 +78,7 @@ class StudentController extends Controller
         $student->matric_number = $matric_number; //Student Matric Number
         $student->student_admission_number = $request->student_admission_number; //Student Admission Number
         $student->student_level = $request->student_level; //Student level
+        $student->session = $request->session; //Student level
         $student->student_gender = $request->student_gender; //Student Gender
         $student->student_course = $request->student_course; //Student Course
         $student->password = $hashed_password; // Student Password
@@ -146,13 +148,24 @@ class StudentController extends Controller
 
         $student = Student::find($id);
 
-        //If in the Process of Editing The User Decided to Change Course
-        if($student->student_course !== $request->student_course){
-            return redirect(route('edit-student', $student->id))
-            ->with('error', 'Note, Student is About to change Course this will Affect the Registration Number.
-            Kindly Delete the Student and Re-register him/her so a new registration number can be issued to him/her');
-        }
+        // //If in the Process of Editing The User Decided to Change Course
+        // if($student->student_course !== $request->student_course){
+        //     return redirect(route('edit-student', $student->id))
+        //     ->with('error', 'Note, Student is About to change Course this will Affect the Registration Number.
+        //     Kindly Delete the Student and Re-register him/her so a new registration number can be issued to him/her');
+        // }
       
+
+
+        $letters = 'ABC';
+        $year = substr($request->session, 2,2);
+        $course = substr(strtoupper($request->student_course), 0, 3);
+        $ref_number = mt_rand(1000, 1999);
+
+        // dd($ref_number);
+        
+        $matric_number = $letters.'/'.$year.'/'.$course.'/'.$ref_number;
+
 
         //Hash Passwords
         $hashed_password = Hash::make($request->password);
@@ -160,6 +173,7 @@ class StudentController extends Controller
         //Save
         $student->student_name = $request->student_name; //Student Name
         $student->student_email = $request->student_email; //Student Email
+        $student->matric_number = $matric_number;
         $student->student_admission_number = $request->student_admission_number; //Student Admission Number
         $student->student_level = $request->student_level; //Student level
         $student->student_gender = $request->student_gender; //Student Gender

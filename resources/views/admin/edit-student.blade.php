@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="container">
     <a class="btn btn-info text-light" href="{{route('students-list')}}"><i class="icofont-arrow-left"></i></a>

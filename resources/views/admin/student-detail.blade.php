@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="container-fluid">
     <div class="container">
@@ -16,7 +16,7 @@
                             <thead>
                                 <tr>
                                   <th>Name</th>
-                                  <th>Reg No</th>
+                                  <th>Matric Number</th>
                                   <th>Email</th>
                                   <th>Adm No</th>
                                   <th>Level</th>
@@ -29,7 +29,7 @@
                             <tbody>  
                                 <tr>
                                     <td><a href="{{route('student-detail', $student->id)}}">{{$student->student_name}}</a></td>
-                                    <td>{{$student->student_reg_number}}</td>
+                                    <td>{{$student->matric_number}}</td>
                                     <td>{{$student->student_email}}</td>
                                     <td>{{$student->student_admission_number}}</td>
                                     <td>{{$student->student_level}}</td>

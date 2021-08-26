@@ -10906,8 +10906,8 @@ a.text-dark:focus {
 
 /*My Css Starts here*/
 *{
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
 .registration-form{

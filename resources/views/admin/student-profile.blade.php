@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }} | <a href=""> Pay School Fees</a></div>
+                <div class="card-header">{{ __('Dashboard') }} | <a class="btn btn-info btn-sm float-right text-light" href="{{route('pay-fees')}}"> Pay School Fees</a></div>
                
                 <div class="card-body">
                     @if (session('status'))

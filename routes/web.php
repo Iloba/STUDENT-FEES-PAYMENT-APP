@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentLogin;
+use App\Http\Controllers\FeesController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::any('/student-login', [StudentLogin::class, 'loginStudent'])->name('stude
 
 //Student Profile
 Route::any('/profile', [StudentLogin::class, 'profile'])->name('student-profile')->middleware('isLogged');
+
+//pay School fees
+Route::any('/profile/pay-fees', [FeesController::class, 'payfees'])->name('pay-fees')->middleware('isLogged');
 
 //Student Logout
 Route::any('/student-logout', [StudentLogin::class, 'logout'])->name('student-logout');

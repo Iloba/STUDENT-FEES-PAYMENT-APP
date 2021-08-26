@@ -10922,3 +10922,11 @@ footer{
   background-color: #fff;
 
 }
+#register-page{
+  background-image: url('../img/register-bg.jpg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+ 
+}

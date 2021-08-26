@@ -66,7 +66,7 @@ class StudentController extends Controller
 
         // dd($ref_number);
         
-        $student_reg_number = $letters.'/'.$year.'/'.$course.'/'.$ref_number;
+        $matric_number = $letters.'/'.$year.'/'.$course.'/'.$ref_number;
 
         // dd($student_reg_number);
     
@@ -74,7 +74,7 @@ class StudentController extends Controller
         $student = new Student;
         $student->student_name = $request->student_name; //Student Name
         $student->student_email = $request->student_email; //Student Email
-        $student->student_reg_number = $student_reg_number; //Student Registration Number
+        $student->matric_number = $matric_number; //Student Matric Number
         $student->student_admission_number = $request->student_admission_number; //Student Admission Number
         $student->student_level = $request->student_level; //Student level
         $student->student_gender = $request->student_gender; //Student Gender

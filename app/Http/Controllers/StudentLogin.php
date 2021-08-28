@@ -30,7 +30,7 @@ class StudentLogin extends Controller
            if(Hash::check($request->password, $student->password)){
 
                 //Create User Session
-                $request->session()->put('LoggedUser', $student->id);
+                $request->session()->put('LoggedUser', $student);
 
                 return redirect(route('student-profile'));
 

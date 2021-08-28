@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.students-nav')
 @section('content')
 <div class="container-fluid">
     <div class="container">
@@ -6,7 +6,105 @@
         <div class="row justify-content-center">
             <div class="col-md-12 p-3">
                 <div class="card p-4">
-                  hey fees
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        S/no
+                                    </th>
+                                    <th>
+                                        Item 
+                                    </th>
+                                    <th>
+                                        Amount
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        Health
+                                    </td>
+                                    <td>
+                                        10,000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       2
+                                    </td>
+                                    <td>
+                                        Computer Programme
+                                    </td>
+                                    <td>
+                                        10,000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       3
+                                    </td>
+                                    <td>
+                                        Health Programme
+                                    </td>
+                                    <td>
+                                        10,000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       4
+                                    </td>
+                                    <td>
+                                        Insurance Programme
+                                    </td>
+                                    <td>
+                                        10,000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      5
+                                    </td>
+                                    <td>
+                                        Security Programme
+                                    </td>
+                                    <td>
+                                        10,000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                     
+                                    </td>
+                                    <td>
+                                        <b>Total</b>
+                                    </td>
+                                    <td>
+                                        50,000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-info text-light" href="">Pay Now</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-info text-light" href="">Pay Half</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-info text-light" href="">Pay 25%</a>
+                                    </td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                    </div>        
+
                 </div>
             </div>
         </div>

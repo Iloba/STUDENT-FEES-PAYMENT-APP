@@ -16,9 +16,9 @@
 
                     {{ __('You are logged in!') }}
                         @if (session('LoggedUser'))
-                        <h3>Hello {{$loggedUserInfo->student_name}}, This is Your Profile Page</h3>
-                        <b>Name:</b> {{$loggedUserInfo->student_name}} <br>
-                        <b> Email:</b> {{$loggedUserInfo->student_email}}
+                        <h3>Hello {{session('LoggedUser')['student_name']}}, This is Your Profile Page</h3>
+                        <b>Name:</b>  {{session('LoggedUser')['student_name']}} <br>
+                        <b> Email:</b> {{session('LoggedUser')['student_email']}}
                         @endif
                     
                     <br>

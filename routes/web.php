@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentLogin;
 use App\Http\Controllers\FeesController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 
 /*
@@ -34,6 +35,18 @@ Route::any('/profile/pay-fees', [FeesController::class, 'payfees'])->name('pay-f
 
 //Student Logout
 Route::any('/student-logout', [StudentLogin::class, 'logout'])->name('student-logout');
+
+
+
+Route::group(['prefix' => '/profile/pay-fees', 'middleware' => 'isLogged'], function(){
+
+    Route::post('/payment', [PaymentController::class, 'paynow'])->name('pay.now');
+    Route::post('/payment-half', [PaymentController::class, 'payhalf'])->name('pay.half');
+    Route::post('/payment-quarter', [PaymentController::class, 'payquarter'])->name('pay.quarter');
+});
+
+
+
 
 //List All Students
 Route::get('/home/students', [StudentController::class, 'index'])->name('students-list')->middleware('auth');

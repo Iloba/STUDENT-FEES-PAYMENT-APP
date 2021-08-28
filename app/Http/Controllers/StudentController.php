@@ -86,11 +86,11 @@ class StudentController extends Controller
         $student->save();
 
         //if Creation was sucessful redirect to dashboard
-        if($student->save()){
-            $request->session()->put('LoggedUser', $student);
+    
+        $request->session()->put('LoggedUser', $student);
 
-            return redirect(route('student-profile'))->with('status', 'Registration Successful');
-        }
+        return redirect(route('student-profile'))->with('status', 'Registration Successful');
+
        
     }
 

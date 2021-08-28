@@ -40,9 +40,9 @@ Route::any('/student-logout', [StudentLogin::class, 'logout'])->name('student-lo
 
 Route::group(['prefix' => '/profile/pay-fees', 'middleware' => 'isLogged'], function(){
 
-    Route::post('/payment', [PaymentController::class, 'paynow'])->name('pay.now');
-    Route::post('/payment-half', [PaymentController::class, 'payhalf'])->name('pay.half');
-    Route::post('/payment-quarter', [PaymentController::class, 'payquarter'])->name('pay.quarter');
+    Route::post('/payment/{id}', [PaymentController::class, 'paynow'])->name('pay.now');
+    Route::post('/payment-half/{id}', [PaymentController::class, 'payhalf'])->name('pay.half');
+    Route::post('/payment-quarter/{id}', [PaymentController::class, 'payquarter'])->name('pay.quarter');
 });
 
 

@@ -91,16 +91,22 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <form action="{{route('pay.now', session('LoggedUser'))}}" method="POST" >
+                                        <form action="{{route('pay.now', session('LoggedUser')['id'])}}" method="POST" >
                                             @csrf
                                             <button type="submit" class="btn btn-info text-light">Pay now</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <a class="btn btn-info text-light" href="{{route('pay.half')}}">Pay Half</a>
+                                        <form action="{{route('pay.half', session('LoggedUser')['id'])}}" method="POST" >
+                                            @csrf
+                                            <button type="submit" class="btn btn-info text-light">Pay Half</button>
+                                        </form>
                                     </td>
                                     <td>
-                                        <a class="btn btn-info text-light" href="{{route('pay.quarter')}}">Pay 25%</a>
+                                        <form action="{{route('pay.quarter', session('LoggedUser')['id'])}}" method="POST" >
+                                            @csrf
+                                            <button type="submit" class="btn btn-info text-light">Pay Quarter</button>
+                                        </form>
                                     </td>
                                 </tr>
                             
